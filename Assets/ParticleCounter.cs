@@ -7,6 +7,7 @@ using ThinksquirrelSoftware.Fluvio.ObjectModel;
 public class ParticleCounter : MonoBehaviour
 {
 	public Fluid fluid;
+	public ColliderParticleCounter cpc;
 
 	private FluidParticle[] particles;
 
@@ -34,6 +35,6 @@ public class ParticleCounter : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		guiText.text = string.Format("Total particles: {0}\nParticles in cup: {1}\nParticles in saucer: {2}", fluid.activeParticleCount, 0, 0);
+		guiText.text = string.Format("Total particles: {0}\nParticles in cup: {1}\nParticles in saucer: {2}", fluid.activeParticleCount, cpc.fluidParticlesCounter, 0);
 	}
 }
