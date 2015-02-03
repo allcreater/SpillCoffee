@@ -53,7 +53,7 @@ public class GameplayManager : MonoBehaviour
 		if (time <= 0.0f || cpc.fluidParticlesCounter == 0 || fluid.activeParticleCount == 0)
 			StopStage ();
 
-		textTimer.text = string.Format ("Time: {0} seconds", time);
+		textTimer.text = string.Format ("Time: {0:F2} seconds", time);
 		textParticlesInfo.text = string.Format("Total particles: {0}\nParticles in cup: {1}\nParticles in saucer: {2}", fluid.activeParticleCount, cpc.fluidParticlesCounter, fluid.activeParticleCount - cpc.fluidParticlesCounter);
 	}
 
