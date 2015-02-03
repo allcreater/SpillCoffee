@@ -35,6 +35,7 @@ public class ParticleCounter : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+
 		guiText.text = string.Format("Total particles: {0}\nParticles in cup: {1}\nParticles in saucer: {2}", fluid.activeParticleCount, cpc.fluidParticlesCounter, 0);
 	}
 }
