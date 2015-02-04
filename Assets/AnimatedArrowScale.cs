@@ -4,17 +4,22 @@ using System.Collections;
 public class AnimatedArrowScale : MonoBehaviour
 {
 	private RectTransform rectTransform;
-	private Vector3 startScale;
+	private Vector3 startPosition;
 	// Use this for initialization
 	void Start ()
 	{
 		rectTransform = GetComponent<RectTransform>();
-		startScale = rectTransform.localScale;
+        startPosition = rectTransform.position;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		rectTransform.localScale = new Vector3 (startScale.x * (Mathf.Sin(Time.timeSinceLevelLoad*5)*0.5f + 0.7f), startScale.y * (Mathf.Cos(Time.timeSinceLevelLoad*5)*0.5f + 0.7f), startScale.z);
+	    float time = Time.timeSinceLevelLoad*5;
+        Vector3 newPos = new Vector3(
+            startPosition.x + (Mathf.Sin(Time.timeSinceLevelLoad*5f)*rectTransform.rect.width/2),
+            startPosition.y, startPosition.z);
+
+	    rectTransform.position = newPos;
 	}
 }
