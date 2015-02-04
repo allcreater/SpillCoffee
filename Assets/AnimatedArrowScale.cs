@@ -15,6 +15,6 @@ public class AnimatedArrowScale : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		rectTransform.localScale = new Vector3 (startScale.x * (Mathf.Sin(Time.timeSinceLevelLoad*5)*0.5f + 0.7f), startScale.y, startScale.z);
+		rectTransform.localScale = new Vector3 (startScale.x * (Mathf.Sin(Time.timeSinceLevelLoad*5)*0.5f + 0.7f), startScale.y * (Mathf.Cos(Time.timeSinceLevelLoad*5)*0.5f + 0.7f), startScale.z);
 	}
 }
