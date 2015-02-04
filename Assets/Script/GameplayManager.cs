@@ -61,10 +61,11 @@ public class GameplayManager : MonoBehaviour
 			StopStage ();
 
 		int newSpriteIndex = Mathf.FloorToInt(time / finishTime * (bgSprites.Length));
-        if (newSpriteIndex >= bgSprites.Length) spriteIndex = bgSprites.Length - 1;
+        if (newSpriteIndex >= bgSprites.Length) newSpriteIndex = bgSprites.Length - 1;
 
         if (newSpriteIndex != spriteIndex)
         {
+            spriteIndex = newSpriteIndex;
             backgroundObject.GetComponent<SpriteRenderer>().sprite = bgSprites[spriteIndex];
         }
 

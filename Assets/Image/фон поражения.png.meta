@@ -1,9 +1,7 @@
 fileFormatVersion: 2
-guid: 0df7c5d4807fa1f49a1dc61ae9e1a29b
+guid: 8c957afd22fc0ae4e801bf96efe9459d
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: cup_0
-    21300002: cup_1
+  fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -27,13 +25,13 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: 16
+    aniso: -1
     mipBias: -1
-    wrapMode: 1
+    wrapMode: -1
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -44,26 +42,6 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites:
-    - name: cup_0
-      rect:
-        serializedVersion: 2
-        x: 224
-        y: 164
-        width: 574
-        height: 361
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-    - name: cup_1
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1023
-        height: 139
-      alignment: 0
-      pivot: {x: .5, y: .5}
-      border: {x: 0, y: 0, z: 0, w: 0}
+    sprites: []
   spritePackingTag: 
   userData: 
