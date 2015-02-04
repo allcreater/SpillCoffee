@@ -12,6 +12,7 @@ public class GameplayManager : MonoBehaviour
 
 	public Fluid fluid;
 	public ColliderParticleCounter cpc;
+	public GravityControl gravityController;
 
 	//костыль :(
 	public Sprite[] bgSprites;
@@ -22,7 +23,7 @@ public class GameplayManager : MonoBehaviour
     private int spriteIndex;
 	private int startParticles = -1;
 	private FluidParticle[] particles;
-	
+
 	void OnEnable()
 	{
 		fluid.OnPostSolve += OnPostSolve;
@@ -56,21 +57,34 @@ public class GameplayManager : MonoBehaviour
 		if (startParticles == -1)
 			return; //game not started
 
-		time += Time.deltaTime;
+		if (time < finishTime)
+		{
+			time += Time.deltaTime;
+		}
+
 		if (time >= finishTime || cpc.fluidParticlesCounter == 0 || fluid.activeParticleCount == 0)
 			StopStage ();
 
+		UpdateGUI ();
+	}
+
+	private void UpdateGUI()
+	{
+		//bg
 		int newSpriteIndex = Mathf.FloorToInt(time / finishTime * (bgSprites.Length));
-        if (newSpriteIndex >= bgSprites.Length) newSpriteIndex = bgSprites.Length - 1;
+		if (newSpriteIndex >= bgSprites.Length) newSpriteIndex = bgSprites.Length - 1;
+		
+		if (newSpriteIndex != spriteIndex)
+		{
+			spriteIndex = newSpriteIndex;
+			backgroundObject.GetComponent<SpriteRenderer>().sprite = bgSprites[spriteIndex];
+		}
 
-        if (newSpriteIndex != spriteIndex)
-        {
-            spriteIndex = newSpriteIndex;
-            backgroundObject.GetComponent<SpriteRenderer>().sprite = bgSprites[spriteIndex];
-        }
-
-	    textTimer.text = string.Format ("Time: {0:F2} seconds", finishTime - time);
+		//text
+		textTimer.text = string.Format ("Time: {0:F2} seconds", finishTime - time);
 		textParticlesInfo.text = string.Format("Total particles: {0}\nParticles in cup: {1}\nParticles in saucer: {2}", fluid.activeParticleCount, cpc.fluidParticlesCounter, fluid.activeParticleCount - cpc.fluidParticlesCounter);
+
+
 	}
 
 	private void StopStage()

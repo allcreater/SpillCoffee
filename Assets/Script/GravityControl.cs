@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GravityControl : MonoBehaviour {
 	private float declinationAngle = 0.0f;
-	private float noiseDeclination;
+	private float noiseDeclination = 0.0f;
 
 	public float playerDeclinationAngle { get { return declinationAngle * 57.3f; } }
 	public float gravityDeclinationAngle { get {return noiseDeclination * 57.3f; } }
@@ -16,8 +16,8 @@ public class GravityControl : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		declinationAngle -= Input.GetAxis ("Horizontal") * Time.deltaTime;
-		declinationAngle = Mathf.Clamp (declinationAngle, -1.0f, 1.0f);
+		//declinationAngle -= Input.GetAxis ("Horizontal") * Time.deltaTime;
+		declinationAngle = Mathf.Clamp ((Input.mousePosition.x-Screen.width / 2)*-0.005f, -1.0f, 1.0f);//Mathf.Clamp (declinationAngle, -1.0f, 1.0f);
 
 		noiseDeclination = 
             Mathf.Sin (Time.realtimeSinceStartup * 3.0f)*0.7f 
