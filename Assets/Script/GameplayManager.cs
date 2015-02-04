@@ -19,6 +19,7 @@ public class GameplayManager : MonoBehaviour
 
 	private float time = 0.0f;
 	private float finishTime = 20.0f;
+    private int spriteIndex;
 	private int startParticles = -1;
 	private FluidParticle[] particles;
 	
@@ -59,10 +60,16 @@ public class GameplayManager : MonoBehaviour
 		if (time >= finishTime || cpc.fluidParticlesCounter == 0 || fluid.activeParticleCount == 0)
 			StopStage ();
 
-		int spriteIndex = Mathf.FloorToInt(time / finishTime * (bgSprites.Length));
-		backgroundObject.GetComponent<SpriteRenderer>().sprite = bgSprites [spriteIndex];
+		int newSpriteIndex = Mathf.FloorToInt(time / finishTime * (bgSprites.Length));
+        if (newSpriteIndex >= bgSprites.Length) newSpriteIndex = bgSprites.Length - 1;
 
-		textTimer.text = string.Format ("Time: {0:F2} seconds", finishTime - time);
+        if (newSpriteIndex != spriteIndex)
+        {
+            spriteIndex = newSpriteIndex;
+            backgroundObject.GetComponent<SpriteRenderer>().sprite = bgSprites[spriteIndex];
+        }
+
+	    textTimer.text = string.Format ("Time: {0:F2} seconds", finishTime - time);
 		textParticlesInfo.text = string.Format("Total particles: {0}\nParticles in cup: {1}\nParticles in saucer: {2}", fluid.activeParticleCount, cpc.fluidParticlesCounter, fluid.activeParticleCount - cpc.fluidParticlesCounter);
 	}
 
